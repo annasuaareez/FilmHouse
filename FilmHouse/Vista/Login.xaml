@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FilmHouse.VistaModelo"
+             x:Class="FilmHouse.Vista.Login"
+             Title=""
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm:ValidadorLogin></vm:ValidadorLogin>
+    </ContentPage.BindingContext>
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+        <Grid BackgroundColor="#616247">
+
+            <Polygon Points="1,0 1,1 0,1" Fill="#DAA03D" Aspect="UniformToFill" />
+
+            <Grid BackgroundColor="White" Margin="60" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Image Source="designer_recycle_2.jpg" Aspect="AspectFit" VerticalOptions="FillAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Margin="30, 30, 30, 30">
+                    <Label Text="Usuario" />
+                    <Entry Text="{Binding Username}" Margin="0, 0, 0, 10"></Entry>
+                    <Label Text="Contraseña" />
+                    <Entry Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,50"></Entry>
+                    <Button Text="Iniciar Sesión" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,350"></Button>
+                    <Label Text="¿No tienes cuenta? Registrarse">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrARegistroCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+
+    </StackLayout>
+    
+</ContentPage>
+    

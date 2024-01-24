@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FilmHouse"
+             x:Class="FilmHouse.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ControlTemplate x:Key="plantilla" x:Name="appTemplate">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Menu Grid (Row 0) -->
+                    <Grid x:Name="menuGrid" BackgroundColor="Wheat" Padding="10,5" Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="logo.png" Grid.Column="0" Aspect="AspectFit" HeightRequest="50" VerticalOptions="Start">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnLogoClicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label Text="Películas" FontSize="20" TextColor="Black" VerticalOptions="CenterAndExpand" Grid.Column="1" HorizontalOptions="End" Margin="33,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFilmClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <SearchBar x:Name="searchBar" WidthRequest="300" HorizontalOptions="End" Grid.Column="3" Grid.Row="0" Margin="0,0,10,0" BackgroundColor="White"
+                                   Placeholder="Search"/>
+                        <Picker x:Name="filterPicker" BackgroundColor="White" WidthRequest="150" Grid.Column="4" HorizontalOptions="End" Margin="0,3,20,0">
+                            <Picker.Items>
+                                <x:String>Title</x:String>
+                                <x:String>Date</x:String>
+                            </Picker.Items>
+                        </Picker>
+
+                        <!--<Picker x:Name="userNamePicker" Title="{x:Static local:App.Username}"  FontAutoScalingEnabled="True"  FontSize="20" TextColor="Black">
+                            <Picker.Items>
+                                <x:String>Favorites</x:String>
+                                <x:String>Cerrar Sesión</x:String>
+                            </Picker.Items>
+                        </Picker>-->
+
+                        <Label x:Name="userName" FontSize="20" Text="{x:Static local:App.Username}" TextColor="Black" VerticalOptions="CenterAndExpand" Grid.Column="5" HorizontalOptions="End" Margin="0,0,20,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnUsuarioClicked" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <!-- Main Content Area (Row 1) -->
+                    <ContentPresenter x:Name="mainContent" Grid.Row="1"/>
+
+                    <!-- Footer Grid (Row 2) -->
+                    <Grid x:Name="footerGrid" BackgroundColor="Wheat" Padding="10,5" Grid.Row="2">
+                        <ImageButton Source="linkedin.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Clicked="OnLinkedinClicked" VerticalOptions="CenterAndExpand"/>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

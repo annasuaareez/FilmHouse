@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmHouse.Template.Pelis"
+             x:Name="pelisContentView">
+
+    <StackLayout Margin="0,0,0,30" x:Name="pelisStackLayout" BackgroundColor="Transparent">
+        <!-- Imagen -->
+        <Image x:Name="poster" Source="{Binding PeliculasUrl}" Aspect="AspectFit" HeightRequest="250" Margin="5,0,5,0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnImageTapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+ 
+        <!-- Nombre -->
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="{Binding OriginalTitle}" FontAttributes="Bold" FontSize="15" TextColor="Black" Margin="5,0,0,0"/>
+        </StackLayout>
+    </StackLayout>
+</ContentView>

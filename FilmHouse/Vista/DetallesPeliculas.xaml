@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pl:Plantilla xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              xmlns:mo="clr-namespace:FilmHouse.Modelo"
+             xmlns:pl="clr-namespace:FilmHouse.Plantillas"
+              x:DataType="mo:Peliculas"
+             x:Class="FilmHouse.Vista.DetallesPeliculas"
+             NavigationPage.HasNavigationBar="False">
+    
+    <StackLayout x:Name="movieDetailsStackLayout" IsVisible="False" Margin="0,10,0,0">
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="moviePosterImage" Source="{Binding PosterPath}" Aspect="AspectFill" HeightRequest="300" Margin="30,0,20,0"/>
+
+            <StackLayout Grid.Column="1" Margin="20">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="movieTitleLabel" Text="{Binding OriginalTitle}" FontSize="25" FontAttributes="Bold" Margin="0,0,35,0"/>
+                    <ImageButton x:Name="favoriteButton" Source="star.png" HorizontalOptions="EndAndExpand" WidthRequest="0" Clicked="FavoriteButton_Clicked"/> 
+                </StackLayout>
+                <Label x:Name="movieReleaseDateAndGenresLabel" Text="{Binding ReleaseDate}" FontSize="12" Margin="0,10,0,0" />
+                <Label x:Name="movieTaglineLabel" Text="{Binding Tagline}" FontSize="14" FontAttributes="Italic" Margin="0,5,0,0" />
+                <Label Text="Overview" FontSize="17" FontAttributes="Bold" Margin="0,10,0,0" />
+                <Label x:Name="movieOverviewLabel" Text="{Binding Overview}" FontSize="16" Margin="0,10,35,0" />
+            </StackLayout>
+        </Grid>
+
+        <WebView x:Name="trailerWebView" IsVisible="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+        <!--<toolkit:MediaElement x:Name="trailerMediaElement" IsVisible="False" HeightRequest="300" />-->
+        
+    </StackLayout>
+</pl:Plantilla>

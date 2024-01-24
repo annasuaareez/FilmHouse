@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FilmHouse.VistaModelo"
+             x:Class="FilmHouse.Vista.Registro"
+             Title=""
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm:ValidadorRegistro></vm:ValidadorRegistro>
+    </ContentPage.BindingContext>
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+        <Grid BackgroundColor="#DAA03D">
+
+            <!-- Triángulo rectángulo -->
+            <Polygon Points="1,0 1,1 0,1" Fill="#616247" Aspect="UniformToFill" />
+
+            <Grid BackgroundColor="White" Margin="60" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" Margin="30, 30, 30, 30">
+                    <Label Text="Nombre" />
+                    <Frame BorderColor="{Binding NombreErrorColor}" Padding="5">
+                        <Entry Text="{Binding Nombre}" Margin="0,0,0,10"/>
+                    </Frame>
+                    <Label Text="{Binding NombreError}" TextColor="#DAA03D" />
+
+                    <Label Text="Edad" />
+                    <Frame BorderColor="{Binding EdadErrorColor}" Padding="5">
+                        <Entry Text="{Binding Edad}" Margin="0,0,0,10"/>
+                    </Frame>
+                    <Label Text="{Binding EdadError}" TextColor="#DAA03D" />
+
+                    <Label Text="Nombre de Usuario" />
+                    <Frame BorderColor="{Binding UsernameErrorColor}" Padding="5">
+                        <Entry Text="{Binding Username}" Margin="0,0,0,10"/>
+                    </Frame>
+                    <Label Text="{Binding UsernameError}" TextColor="#DAA03D" />
+
+                    <Label Text="Contraseña" />
+                    <Frame BorderColor="{Binding ContrasenaErrorColor}" Padding="5">
+                        <Entry Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,10"/>
+                    </Frame>
+                    <Label Text="{Binding ContrasenaError}" TextColor="#DAA03D" />
+
+                    <Label Text="Repetir contraseña" />
+                    <Frame BorderColor="{Binding RepetirContrasenaErrorColor}" Padding="5">
+                        <Entry Text="{Binding RepetirContrasena}" IsPassword="True" Margin="0,0,0,20"/>
+                    </Frame>
+                    <Label Text="{Binding RepetirContrasenaError}" TextColor="#DAA03D" />
+
+                    <Button Text="Registrar" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,20"/>
+                    <Label Text="¿Ya se encuentra registrado? Iniciar Sesión">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding IrAInicioSesionCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Image Source="designer_recycle.jpg" Aspect="AspectFit" VerticalOptions="FillAndExpand" />
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+
+    </StackLayout>
+
+</ContentPage>
