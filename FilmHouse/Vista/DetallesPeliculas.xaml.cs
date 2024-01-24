@@ -13,8 +13,8 @@ public partial class DetallesPeliculas : Plantilla
     {
         InitializeComponent();
         this.movieId = movieId;
-        CheckAndUpdateFavoriteStatus();
         GetDetallesPelicula(movieId);
+        VerificarFavorito();
     }
 
     private async void GetDetallesPelicula(int movieId)
@@ -57,6 +57,8 @@ public partial class DetallesPeliculas : Plantilla
             {
                 System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
             }
+
+            VerificarFavorito();
         }
     }
 
@@ -113,10 +115,8 @@ public partial class DetallesPeliculas : Plantilla
     {
         System.Diagnostics.Debug.WriteLine("BOTON FAV");
 
-        // Use the userId variable instead of user.Id
         try
         {
-
             int userId = Preferences.Get("UserID", defaultValue: 0);
 
             if (userId == 0)
@@ -135,20 +135,20 @@ public partial class DetallesPeliculas : Plantilla
 
             bool isFavorited = favoritosRepositorios.ListarPeliculasFavoritas().Any(item => item.UsuarioId == userId && item.PeliculaId == movieId);
 
+
             if (isFavorited)
             {
                 System.Diagnostics.Debug.WriteLine("PELI ELIMINADA");
                 favoritosRepositorios.RemovePeliculaFav(new UsuarioPeliculaFavorita { UsuarioId = userId, PeliculaId = movieId });
-                favoriteButton.Source = "star.png";
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("PELI AGREGADA");
                 favoritosRepositorios.AddPeliculaFav(new UsuarioPeliculaFavorita { UsuarioId = userId, PeliculaId = movieId });
-                favoriteButton.Source = "star_fill.png";
-
-                SecureStorage.SetAsync($"FavoriteStatus_{userId}_{movieId}", "true");
             }
+
+            favoriteButton.Source = isFavorited ? "star.png" : "star_fill.png";
+
         }
         catch (Exception ex)
         {
@@ -156,25 +156,30 @@ public partial class DetallesPeliculas : Plantilla
         }
     }
 
-    private async void CheckAndUpdateFavoriteStatus()
+    private void VerificarFavorito()
     {
-        int userId = Preferences.Get("UserID", defaultValue: 0);
-
-        if (userId == 0)
+        try
         {
-            System.Diagnostics.Debug.WriteLine("User ID not found");
-            return;
+            int userId = Preferences.Get("UserID", defaultValue: 0);
+
+            if (userId == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("ID del usuario no encontrado");
+                return;
+            }
+
+            string databasePath = @"C:\Users\annas\AppData\Local\Packages\a6f808c3-ea24-4ba6-8b77-77b71c77dc47_9zz4h110yvjzm\LocalState\usuarios.db";
+            FavoritosRepositorio favoritosRepositorios = new FavoritosRepositorio(databasePath);
+
+            bool isFavorited = favoritosRepositorios.ListarPeliculasFavoritas().Any(item => item.UsuarioId == userId && item.PeliculaId == movieId);
+
+            // Ajustar la imagen del botón según el estado de favorito
+            favoriteButton.Source = isFavorited ? "star_fill.png" : "star.png";
         }
-
-        bool isFavorited = await SecureStorage.GetAsync($"FavoriteStatus_{userId}_{movieId}") == "true";
-
-        if (isFavorited)
+        catch (Exception ex)
         {
-            favoriteButton.Source = "star_fill.png";
-        }
-        else
-        {
-            favoriteButton.Source = "star.png";
+            System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
         }
     }
+
 }

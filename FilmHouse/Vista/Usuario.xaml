@@ -23,7 +23,7 @@
             </CollectionView>
 
             <!-- Message Label -->
-            <Label x:Name="mensajeLabel" Text="" FontSize="16" TextColor="Red" Margin="20,10,0,0" IsVisible="False" />
+            <Label x:Name="mensajeLabel" Text="" FontSize="22" TextColor="Red" HorizontalOptions="CenterAndExpand" Margin="0,60,0,0" IsVisible="False" />
         </StackLayout>
     </ScrollView>
 </pl:Plantilla>

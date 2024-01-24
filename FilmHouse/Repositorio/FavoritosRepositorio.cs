@@ -34,8 +34,8 @@ namespace FilmHouse.Repositorios
         public void RemovePeliculaFav(UsuarioPeliculaFavorita peliculaFavorita)
         {
             System.Diagnostics.Debug.WriteLine($"UsuarioId: {peliculaFavorita.UsuarioId}, PeliculaId: {peliculaFavorita.PeliculaId}");
-            conexion.Delete(peliculaFavorita);
-            
+            conexion.Table<UsuarioPeliculaFavorita>().Where(f => f.UsuarioId == peliculaFavorita.UsuarioId && f.PeliculaId == peliculaFavorita.PeliculaId).Delete();
+
         }
 
         public ObservableCollection<UsuarioPeliculaFavorita> ListarPeliculasFavoritas()
