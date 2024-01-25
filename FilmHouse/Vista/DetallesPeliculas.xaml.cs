@@ -38,8 +38,10 @@ public partial class DetallesPeliculas : Plantilla
                     string genres = movieDetails.Genres != null ? string.Join(",", movieDetails.Genres.Select
                         (gen => gen.Name)) : string.Empty;
 
+                    string releaseYear = DateTime.Parse(movieDetails.ReleaseDate).Year.ToString();
+
                     moviePosterImage.Source = movieDetails.PosterUrl;
-                    movieTitleLabel.Text = $"{movieDetails.OriginalTitle} ({movieDetails.VoteAverage})";
+                    movieTitleLabel.Text = $"{movieDetails.OriginalTitle} ({releaseYear})";
                     movieReleaseDateAndGenresLabel.Text = $"{movieDetails.ReleaseDate} • {genres}";
                     movieTaglineLabel.Text = movieDetails.Tagline;
                     movieOverviewLabel.Text = movieDetails.Overview;
@@ -111,7 +113,7 @@ public partial class DetallesPeliculas : Plantilla
         }
     }
 
-    private void FavoriteButton_Clicked(object sender, EventArgs e)
+    private async void FavoriteButton_Clicked(object sender, EventArgs e)
     {
         System.Diagnostics.Debug.WriteLine("BOTON FAV");
 
@@ -135,19 +137,32 @@ public partial class DetallesPeliculas : Plantilla
 
             bool isFavorited = favoritosRepositorios.ListarPeliculasFavoritas().Any(item => item.UsuarioId == userId && item.PeliculaId == movieId);
 
-
             if (isFavorited)
             {
-                System.Diagnostics.Debug.WriteLine("PELI ELIMINADA");
-                favoritosRepositorios.RemovePeliculaFav(new UsuarioPeliculaFavorita { UsuarioId = userId, PeliculaId = movieId });
+                bool answer = await DisplayAlert("Alerta", "¿Seguro que quieres quitar esta película de favoritos?", "Sí", "No");
+
+                if (answer)
+                {
+                    System.Diagnostics.Debug.WriteLine("PELI ELIMINADA");
+                    favoritosRepositorios.RemovePeliculaFav(new UsuarioPeliculaFavorita { UsuarioId = userId, PeliculaId = movieId });
+
+                    // Update the image of the button after removal
+                    favoriteButton.Source = "star.png";
+                }
+                else
+                {
+                    favoriteButton.Source = "star_fill.png";
+                }
             }
             else
             {
                 System.Diagnostics.Debug.WriteLine("PELI AGREGADA");
                 favoritosRepositorios.AddPeliculaFav(new UsuarioPeliculaFavorita { UsuarioId = userId, PeliculaId = movieId });
+
+                favoriteButton.Source = "star_fill.png";
             }
 
-            favoriteButton.Source = isFavorited ? "star.png" : "star_fill.png";
+            //favoriteButton.Source = isFavorited ? "star.png" : "star_fill.png";
 
         }
         catch (Exception ex)

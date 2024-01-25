@@ -9,8 +9,36 @@
 
     <ScrollView>
         <StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="20,20,20,0">
+                <SearchBar x:Name="searchBar" WidthRequest="400" HorizontalOptions="Start" Margin="0,0,10,0" BackgroundColor="White"/>
+
+                <Picker x:Name="Genres" BackgroundColor="White" WidthRequest="150" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" Margin="20,3,0,0">
+                    <Picker.Items>
+                        <x:String>Action</x:String>
+                        <x:String>Adventure</x:String>
+                        <x:String>Animation</x:String>
+                        <x:String>Comedy</x:String>
+                        <x:String>Crime</x:String>
+                        <x:String>Documentary</x:String>
+                        <x:String>Drama</x:String>
+                        <x:String>Family</x:String>
+                        <x:String>Fantasy</x:String>
+                        <x:String>History</x:String>
+                        <x:String>Horror</x:String>
+                        <x:String>Music</x:String>
+                        <x:String>Mystery</x:String>
+                        <x:String>Romance</x:String>
+                        <x:String>Science Fiction</x:String>
+                        <x:String>TV Movie</x:String>
+                        <x:String>Thriller</x:String>
+                        <x:String>War</x:String>
+                        <x:String>Western</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            
             <!-- Title Films -->
-            <Label Text="Popular Films" FontSize="20" FontAttributes="Bold" Margin="20,20,0,0" />
+            <Label x:Name="titleLabel" Text="Popular Films" FontSize="20" FontAttributes="Bold" Margin="20,20,0,0" />
 
             <!-- CollectionView -->
             <CollectionView x:Name="movieCollection" Margin="20,0,20,0">

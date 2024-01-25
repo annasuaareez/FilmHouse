@@ -1,4 +1,5 @@
 ﻿using FilmHouse.Modelo;
+using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,37 @@ namespace FilmHouse.Repositorio
             List<Pelicula> lista = conexion.Table<Pelicula>().ToList();
             ObservableCollection<Pelicula> listaPeliculas = new ObservableCollection<Pelicula>(lista);
             return listaPeliculas;
+        }
+
+        public async Task<List<Peliculas>> GetPeliculasByQuery(string query, string apiKey)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+
+                try
+                {
+                    string apiUrl = $"https://api.themoviedb.org/3/search/movie?query={query}";
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseData = await response.Content.ReadAsStringAsync();
+                        var movies = JsonConvert.DeserializeObject<List<Peliculas>>(responseData);
+                        return movies;
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
+                    return null;
+                }
+            }
         }
     }
 }

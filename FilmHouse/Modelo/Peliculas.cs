@@ -40,6 +40,9 @@ namespace FilmHouse.Modelo
         [JsonProperty("genres")]
         public List<Genre> Genres { get; set; }
 
+        [JsonProperty("genre_ids")] 
+        public List<int> GenreIds { get; set; }
+
         [JsonProperty("vote_average")]
         public double VoteAverage { get; set; }
 

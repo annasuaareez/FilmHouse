@@ -1,4 +1,5 @@
-﻿using FilmHouse.Repositorio;
+﻿using FilmHouse.Modelo;
+using FilmHouse.Repositorio;
 using FilmHouse.Repositorios;
 using System.Collections.ObjectModel;
 
@@ -9,16 +10,20 @@ namespace FilmHouse
         public static UserRepositorio userRepositorio { get; set; }
         public static FavoritosRepositorio favoritosRepositorio { get; set; }
         public static PeliculaRepositorio peliculaRepositorio { get; set; }
-        public ObservableCollection<string> MenuItems { get; set; }
+
+        public ObservableCollection<Peliculas> Pelicula { get; set; }
+        private string _searchQuery;
+        private Picker filterPicker;
 
         public static string Username { get; set; }
 
         public App(UserRepositorio _userRepositorio, FavoritosRepositorio _favoritosRepositorios, PeliculaRepositorio _peliculaRepositorio)
         {
+            Pelicula = new ObservableCollection<Peliculas>();
+
             userRepositorio = _userRepositorio;
             favoritosRepositorio = _favoritosRepositorios;
             peliculaRepositorio = _peliculaRepositorio;
-            MenuItems = new ObservableCollection<string>(new List<string> { "Favorito", "Cerrar Sesión" });
 
             InitializeComponent();
 
@@ -86,10 +91,22 @@ namespace FilmHouse
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al abrir el enlace: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error al abrir el enlace: {ex.Message}");
             }
         }
 
+        private void OnGitHubClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var uri = new Uri("https://github.com/annasuaareez");
+                Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error al abrir el enlace: {ex.Message}");
+            }
+        }
 
     }
 }

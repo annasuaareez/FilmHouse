@@ -41,27 +41,22 @@
                                 <TapGestureRecognizer Tapped="OnFilmClicked" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <SearchBar x:Name="searchBar" WidthRequest="300" HorizontalOptions="End" Grid.Column="3" Grid.Row="0" Margin="0,0,10,0" BackgroundColor="White"
-                                   Placeholder="Search"/>
-                        <Picker x:Name="filterPicker" BackgroundColor="White" WidthRequest="150" Grid.Column="4" HorizontalOptions="End" Margin="0,3,20,0">
-                            <Picker.Items>
-                                <x:String>Title</x:String>
-                                <x:String>Date</x:String>
-                            </Picker.Items>
-                        </Picker>
 
-                        <!--<Picker x:Name="userNamePicker" Title="{x:Static local:App.Username}"  FontAutoScalingEnabled="True"  FontSize="20" TextColor="Black">
-                            <Picker.Items>
-                                <x:String>Favorites</x:String>
-                                <x:String>Cerrar Sesión</x:String>
-                            </Picker.Items>
-                        </Picker>-->
-
-                        <Label x:Name="userName" FontSize="20" Text="{x:Static local:App.Username}" TextColor="Black" VerticalOptions="CenterAndExpand" Grid.Column="5" HorizontalOptions="End" Margin="0,0,20,0">
+                        <Label x:Name="userName" Grid.Column="5" FontSize="20" Text="{x:Static local:App.Username}" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="End" Margin="0,0,20,0">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnUsuarioClicked" />
                             </Label.GestureRecognizers>
                         </Label>
+
+                        <!--<TableView Grid.Column="5">
+                            <TableRoot>
+                                <TableSection Title="{x:Static local:App.Username}">
+                                    <TextCell Text="Favoritos"/>
+                                    <TextCell Text="Cerrar Sesión"/>
+                                    --><!-- Otras celdas con datos --><!--
+                                </TableSection>
+                            </TableRoot>
+                        </TableView>-->
                     </Grid>
 
                     <!-- Main Content Area (Row 1) -->
@@ -69,7 +64,10 @@
 
                     <!-- Footer Grid (Row 2) -->
                     <Grid x:Name="footerGrid" BackgroundColor="Wheat" Padding="10,5" Grid.Row="2">
-                        <ImageButton Source="linkedin.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Clicked="OnLinkedinClicked" VerticalOptions="CenterAndExpand"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30">
+                            <ImageButton Source="linkedin.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Clicked="OnLinkedinClicked" VerticalOptions="CenterAndExpand"/>
+                            <ImageButton Source="github.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Clicked="OnGitHubClicked" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
+                        </StackLayout>
                     </Grid>
                 </Grid>
             </ControlTemplate>

@@ -5,7 +5,7 @@
              xmlns:pl="clr-namespace:FilmHouse.Plantillas"
              x:Class="FilmHouse.Vista.PeliculasPage">
     <ScrollView>
-        <StackLayout>
+        <StackLayout>            
             <!-- CollectionView -->
             <CollectionView x:Name="movieCollection" Margin="20,0,20,0">
                 <CollectionView.ItemsLayout>

@@ -48,13 +48,14 @@ public partial class PeliculasPage : Plantilla
                 }
                 else
                 {
-                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
+                    System.Diagnostics.Debug.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
             }
         }
     }
+
 }
