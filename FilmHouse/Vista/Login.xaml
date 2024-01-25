@@ -27,12 +27,20 @@
                 </StackLayout>
 
                 <StackLayout Grid.Column="1" Margin="30, 30, 30, 30">
-                    <Label Text="Usuario" />
-                    <Entry Text="{Binding Username}" Margin="0, 0, 0, 10"></Entry>
-                    <Label Text="Contraseña" />
-                    <Entry Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,50"></Entry>
-                    <Button Text="Iniciar Sesión" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,350"></Button>
-                    <Label Text="¿No tienes cuenta? Registrarse">
+                    <Label Text="Name">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Entry x:Name="Username" Text="{Binding Username}" Margin="0, 0, 0, 10"></Entry>
+                    <Label Text="Password">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Entry x:Name="Pass" Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,50"></Entry>
+                    <Button Text="Login" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,350"></Button>
+                    <Label Text="Don't have an account? Sign up.">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding IrARegistroCommand}" />
                         </Label.GestureRecognizers>

@@ -24,38 +24,38 @@
                 </Grid.ColumnDefinitions>
 
                 <StackLayout Grid.Column="0" Margin="30, 30, 30, 30">
-                    <Label Text="Nombre" />
+                    <Label Text="Name" />
                     <Frame BorderColor="{Binding NombreErrorColor}" Padding="5">
-                        <Entry Text="{Binding Nombre}" Margin="0,0,0,10"/>
+                        <Entry x:Name="Nombre" Text="{Binding Nombre}" Margin="0,0,0,10"/>
                     </Frame>
                     <Label Text="{Binding NombreError}" TextColor="#DAA03D" />
 
-                    <Label Text="Edad" />
+                    <Label Text="Age" />
                     <Frame BorderColor="{Binding EdadErrorColor}" Padding="5">
-                        <Entry Text="{Binding Edad}" Margin="0,0,0,10"/>
+                        <Entry x:Name="Edad" Text="{Binding Edad}" Margin="0,0,0,10"/>
                     </Frame>
                     <Label Text="{Binding EdadError}" TextColor="#DAA03D" />
 
-                    <Label Text="Nombre de Usuario" />
+                    <Label Text="Username" />
                     <Frame BorderColor="{Binding UsernameErrorColor}" Padding="5">
-                        <Entry Text="{Binding Username}" Margin="0,0,0,10"/>
+                        <Entry x:Name="Usuario" Text="{Binding Username}" Margin="0,0,0,10"/>
                     </Frame>
                     <Label Text="{Binding UsernameError}" TextColor="#DAA03D" />
 
-                    <Label Text="Contraseña" />
+                    <Label Text="Password" />
                     <Frame BorderColor="{Binding ContrasenaErrorColor}" Padding="5">
-                        <Entry Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,10"/>
+                        <Entry x:Name="Contraseña" Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,10"/>
                     </Frame>
                     <Label Text="{Binding ContrasenaError}" TextColor="#DAA03D" />
 
-                    <Label Text="Repetir contraseña" />
+                    <Label Text="Repeat Password" />
                     <Frame BorderColor="{Binding RepetirContrasenaErrorColor}" Padding="5">
-                        <Entry Text="{Binding RepetirContrasena}" IsPassword="True" Margin="0,0,0,20"/>
+                        <Entry x:Name="Contraseña2" Text="{Binding RepetirContrasena}" IsPassword="True" Margin="0,0,0,20"/>
                     </Frame>
                     <Label Text="{Binding RepetirContrasenaError}" TextColor="#DAA03D" />
 
                     <Button Text="Registrar" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,20"/>
-                    <Label Text="¿Ya se encuentra registrado? Iniciar Sesión">
+                    <Label Text="Have already an account? Login.">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding IrAInicioSesionCommand}" />
                         </Label.GestureRecognizers>
