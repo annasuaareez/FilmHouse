@@ -63,7 +63,7 @@
                     <ContentPresenter x:Name="mainContent" Grid.Row="1"/>
 
                     <!-- Footer Grid (Row 2) -->
-                    <Grid x:Name="footerGrid" BackgroundColor="Wheat" Padding="10,5" Grid.Row="2">
+                    <Grid x:Name="footerGrid" BackgroundColor="#F2CDAC" Padding="10,5" Grid.Row="2">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30">
                             <ImageButton Source="linkedin.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Clicked="OnLinkedinClicked" VerticalOptions="CenterAndExpand"/>
                             <ImageButton Source="github.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30" Clicked="OnGitHubClicked" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent"/>
