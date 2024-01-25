@@ -12,9 +12,9 @@
 
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-        <Grid BackgroundColor="#616247">
+        <Grid BackgroundColor="#4CABA6">
 
-            <Polygon Points="1,0 1,1 0,1" Fill="#DAA03D" Aspect="UniformToFill" />
+            <Polygon Points="1,0 1,1 0,1" Fill="#F2CDAC" Aspect="UniformToFill" />
 
             <Grid BackgroundColor="White" Margin="60" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
                 <Grid.ColumnDefinitions>
@@ -23,11 +23,11 @@
                 </Grid.ColumnDefinitions>
 
                 <StackLayout Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Image Source="designer_recycle_2.jpg" Aspect="AspectFit" VerticalOptions="FillAndExpand"/>
+                    <Image Source="cinema2.jpg" Aspect="AspectFit" VerticalOptions="FillAndExpand"/>
                 </StackLayout>
 
                 <StackLayout Grid.Column="1" Margin="30, 30, 30, 30">
-                    <Label Text="Name">
+                    <Label Text="Username">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
                         </Label.GestureRecognizers>
@@ -39,7 +39,7 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <Entry x:Name="Pass" Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,50"></Entry>
-                    <Button Text="Login" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,350"></Button>
+                    <Button Text="Login" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#F2CDAC" Margin="0,0,0,350"></Button>
                     <Label Text="Don't have an account? Sign up.">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding IrARegistroCommand}" />

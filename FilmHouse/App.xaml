@@ -20,7 +20,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Menu Grid (Row 0) -->
-                    <Grid x:Name="menuGrid" BackgroundColor="Wheat" Padding="10,5" Grid.Row="0">
+                    <Grid x:Name="menuGrid" BackgroundColor="#F2CDAC" Padding="10,5" Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="Auto"/>

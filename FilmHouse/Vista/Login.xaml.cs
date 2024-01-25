@@ -19,7 +19,7 @@ public partial class Login : ContentPage
             case "Cut":
                 switch (valorTexto)
                 {
-                    case "Name":
+                    case "Username":
                         await Clipboard.SetTextAsync(Username.Text);
                         Username.Text = "";
                         break;
@@ -32,7 +32,7 @@ public partial class Login : ContentPage
             case "Copy":
                 switch (valorTexto)
                 {
-                    case "Name":
+                    case "Username":
                         await Clipboard.SetTextAsync(Username.Text);
                         break;
                     case "Password":
@@ -43,7 +43,7 @@ public partial class Login : ContentPage
             case "Paste":
                 switch (valorTexto)
                 {
-                    case "Name":
+                    case "Username":
                         Username.Text += await Clipboard.GetTextAsync();
                         break;
                     case "Password":

@@ -12,10 +12,10 @@
 
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
-        <Grid BackgroundColor="#DAA03D">
+        <Grid BackgroundColor="#F2CDAC">
 
             <!-- Triángulo rectángulo -->
-            <Polygon Points="1,0 1,1 0,1" Fill="#616247" Aspect="UniformToFill" />
+            <Polygon Points="1,0 1,1 0,1" Fill="#4CABA6" Aspect="UniformToFill" />
 
             <Grid BackgroundColor="White" Margin="60" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
                 <Grid.ColumnDefinitions>
@@ -24,37 +24,57 @@
                 </Grid.ColumnDefinitions>
 
                 <StackLayout Grid.Column="0" Margin="30, 30, 30, 30">
-                    <Label Text="Name" />
+                    <Label Text="Name">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Frame BorderColor="{Binding NombreErrorColor}" Padding="5">
                         <Entry x:Name="Nombre" Text="{Binding Nombre}" Margin="0,0,0,10"/>
                     </Frame>
-                    <Label Text="{Binding NombreError}" TextColor="#DAA03D" />
+                    <Label Text="{Binding NombreError}" TextColor="#BF0426" />
 
-                    <Label Text="Age" />
+                    <Label Text="Age">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Frame BorderColor="{Binding EdadErrorColor}" Padding="5">
                         <Entry x:Name="Edad" Text="{Binding Edad}" Margin="0,0,0,10"/>
                     </Frame>
-                    <Label Text="{Binding EdadError}" TextColor="#DAA03D" />
+                    <Label Text="{Binding EdadError}" TextColor="#BF0426" />
 
-                    <Label Text="Username" />
+                    <Label Text="Username">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Frame BorderColor="{Binding UsernameErrorColor}" Padding="5">
                         <Entry x:Name="Usuario" Text="{Binding Username}" Margin="0,0,0,10"/>
                     </Frame>
-                    <Label Text="{Binding UsernameError}" TextColor="#DAA03D" />
+                    <Label Text="{Binding UsernameError}" TextColor="#BF0426" />
 
-                    <Label Text="Password" />
+                    <Label Text="Password">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Frame BorderColor="{Binding ContrasenaErrorColor}" Padding="5">
                         <Entry x:Name="Contraseña" Text="{Binding Contrasena}" IsPassword="True" Margin="0,0,0,10"/>
                     </Frame>
-                    <Label Text="{Binding ContrasenaError}" TextColor="#DAA03D" />
+                    <Label Text="{Binding ContrasenaError}" TextColor="#BF0426" />
 
-                    <Label Text="Repeat Password" />
+                    <Label Text="Repeat Password">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped ="TapCopyCutPaste" />
+                        </Label.GestureRecognizers>
+                    </Label>
                     <Frame BorderColor="{Binding RepetirContrasenaErrorColor}" Padding="5">
                         <Entry x:Name="Contraseña2" Text="{Binding RepetirContrasena}" IsPassword="True" Margin="0,0,0,20"/>
                     </Frame>
-                    <Label Text="{Binding RepetirContrasenaError}" TextColor="#DAA03D" />
+                    <Label Text="{Binding RepetirContrasenaError}" TextColor="#BF0426" />
 
-                    <Button Text="Registrar" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#616247" Margin="0,0,0,20"/>
+                    <Button Text="Registrar" Command="{Binding validarCommand}" WidthRequest="120" BackgroundColor="#4CABA6" Margin="0,0,0,20"/>
                     <Label Text="Have already an account? Login.">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding IrAInicioSesionCommand}" />
@@ -63,7 +83,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <Image Source="designer_recycle.jpg" Aspect="AspectFit" VerticalOptions="FillAndExpand" />
+                    <Image Source="cinema.jpg" Aspect="AspectFit" VerticalOptions="FillAndExpand" />
                 </StackLayout>
             </Grid>
 

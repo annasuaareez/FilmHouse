@@ -183,25 +183,25 @@ namespace FilmHouse.VistaModelo
 
             //Miramos loe errores de forma individual
             UsernameError = GetErrors(nameof(Username)).FirstOrDefault()?.ErrorMessage;
-            UsernameErrorColor = string.IsNullOrEmpty(UsernameError) ? Color.FromHex("#00000000") : Color.FromHex("#DAA03D");
+            UsernameErrorColor = string.IsNullOrEmpty(UsernameError) ? Color.FromHex("#00000000") : Color.FromHex("#BF0426");
 
             NombreError = GetErrors(nameof(Nombre)).FirstOrDefault()?.ErrorMessage;
-            NombreErrorColor = string.IsNullOrEmpty(NombreError) ? Color.FromHex("#00000000") : Color.FromHex("#DAA03D");
+            NombreErrorColor = string.IsNullOrEmpty(NombreError) ? Color.FromHex("#00000000") : Color.FromHex("#BF0426");
 
             ContrasenaError = GetErrors(nameof(Contrasena)).FirstOrDefault()?.ErrorMessage;
-            ContrasenaErrorColor = string.IsNullOrEmpty(ContrasenaError) ? Color.FromHex("#00000000") : Color.FromHex("#DAA03D");
+            ContrasenaErrorColor = string.IsNullOrEmpty(ContrasenaError) ? Color.FromHex("#00000000") : Color.FromHex("#BF0426");
 
             RepetirContrasenaError = string.Equals(Contrasena, RepetirContrasena) ? "" : "Las contraseñas no coinciden";
-            RepetirContrasenaErrorColor = string.IsNullOrEmpty(RepetirContrasenaError) ? Color.FromHex("#00000000") : Color.FromHex("#DAA03D");
+            RepetirContrasenaErrorColor = string.IsNullOrEmpty(RepetirContrasenaError) ? Color.FromHex("#00000000") : Color.FromHex("#BF0426");
 
             EdadError = GetErrors(nameof(Edad)).FirstOrDefault()?.ErrorMessage;
-            EdadErrorColor = string.IsNullOrEmpty(EdadError) ? Color.FromHex("#00000000") : Color.FromHex("#DAA03D");
+            EdadErrorColor = string.IsNullOrEmpty(EdadError) ? Color.FromHex("#00000000") : Color.FromHex("#BF0426");
 
             if (!string.IsNullOrEmpty(Username) && ValidarNombreUsuarioUnico())
             {
                 UsernameError = "Nombre de usuario ya existe";
                 ErroresRegistro.Add(UsernameError);
-                UsernameErrorColor = Color.FromHex("#DAA03D");
+                UsernameErrorColor = Color.FromHex("#BF0426");
             }
 
             if (ErroresRegistro.Count == 0 && string.IsNullOrEmpty(UsernameError) && string.IsNullOrEmpty(NombreError) &&
